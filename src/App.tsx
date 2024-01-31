@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import logo from "./logo.svg"
 import "./App.css"
 import * as userService from "./service/userService"
+import LoginForm from "./components/LoginForm"
 
 // MOVE THIS TO USER.TS
 interface User {
@@ -17,22 +18,35 @@ interface User {
 
 function App() {
   const [userData, setUserData] = useState<Array<any>>([])
+  const [usersLoaded, setUsersLoaded] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
-    userService
-      .getUsers()
-      .then((data) => {
-        setUserData(data)
-        console.log(data) // Logga resultatet i konsolen
-      })
-      .catch((error) => {
-        console.error("Fel vid hämtning av användare:", error)
-      })
-  }, [])
+    const token = localStorage.getItem("token")
+    setIsAuthenticated(!!token)
+    if (token) {
+      userService
+        .getUsers()
+        .then((data) => {
+          setUserData(Array.isArray(data) ? data : [])
+          setUsersLoaded(true)
+        })
+        .catch((error) => {
+          console.error("Fel vid hämtning av användare:", error)
+          setUserData([])
+        })
+    }
+  }, [isAuthenticated])
 
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Admin Panel</h2>
+
+      <LoginForm
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+      />
+
       {userData && (
         <table className="table table-bordered">
           <thead>
