@@ -12,7 +12,7 @@ interface User {
   accountNonLocked: boolean
   credentialsNonExpired: boolean
   enabled: boolean
-  authorities: Array<{ authority: string }> // En array med objekt som har en authority-attribut
+  authorities: Array<{ authority: string }>
 }
 
 function App() {
@@ -31,29 +31,43 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Admin Panel</h2>
       {userData && (
-        <div>
-          <h2>Användardata:</h2>
-          {userData.map((user, index) => (
-            <li key={index}>
-              <strong>Användarnamn:</strong> {user.username} <br />
-              <strong>Lösenord:</strong> {user.password} <br />
-              <strong>Roll:</strong> {user.role} <br />
-              <strong>Account Non Expired:</strong>{" "}
-              {user.accountNonExpired ? "Ja" : "Nej"} <br />
-              <strong>Account Non Locked:</strong>{" "}
-              {user.accountNonLocked ? "Ja" : "Nej"} <br />
-              <strong>Credentials Non Expired:</strong>{" "}
-              {user.credentialsNonExpired ? "Ja" : "Nej"} <br />
-              <strong>Aktiverad:</strong> {user.enabled ? "Ja" : "Nej"} <br />
-              <strong>Behörigheter:</strong>{" "}
-              {user.authorities
-                .map((authority: { authority: string }) => authority.authority)
-                .join(", ")}
-            </li>
-          ))}
-        </div>
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>Användarnamn</th>
+              <th>Lösenord</th>
+              <th>Roll</th>
+              <th>Account Non Expired</th>
+              <th>Account Non Locked</th>
+              <th>Credentials Non Expired</th>
+              <th>Aktiverad</th>
+              <th>Behörigheter</th>
+            </tr>
+          </thead>
+          <tbody>
+            {userData.map((user, index) => (
+              <tr key={index}>
+                <td>{user.username}</td>
+                <td>{user.password}</td>
+                <td>{user.role}</td>
+                <td>{user.accountNonExpired ? "Ja" : "Nej"}</td>
+                <td>{user.accountNonLocked ? "Ja" : "Nej"}</td>
+                <td>{user.credentialsNonExpired ? "Ja" : "Nej"}</td>
+                <td>{user.enabled ? "Ja" : "Nej"}</td>
+                <td>
+                  {user.authorities
+                    .map(
+                      (authority: { authority: string }) => authority.authority
+                    )
+                    .join(", ")}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   )
