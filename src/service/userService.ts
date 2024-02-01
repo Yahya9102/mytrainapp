@@ -17,7 +17,7 @@ export async function loginUser(credentials: {
 }) {
   try {
     const response = await axios.post(baseURL + "login", credentials)
-    localStorage.setItem("token", response.data) // Spara token
+    localStorage.setItem("token", response.data)
     console.log(response.data)
     return response.data
   } catch (error) {
