@@ -1,10 +1,6 @@
 import React, { useState } from "react"
 import { loginUser } from "../service/userService"
-
-interface LoginFormProps {
-  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>
-  setGlobalUsername: React.Dispatch<React.SetStateAction<string>>
-}
+import { LoginFormProps } from "../Types"
 
 function LoginForm({ setIsAuthenticated, setGlobalUsername }: LoginFormProps) {
   const [username, setUsername] = useState("")

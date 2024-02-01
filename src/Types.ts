@@ -13,3 +13,13 @@ export interface NavbarProps {
   username?: string
   handleLogout: () => void
 }
+
+export interface AdminProps {
+  username: string
+  handleLogout: () => void
+}
+
+export interface LoginFormProps {
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>
+  setGlobalUsername: React.Dispatch<React.SetStateAction<string>>
+}

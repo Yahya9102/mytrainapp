@@ -18,6 +18,7 @@ export async function loginUser(credentials: {
   try {
     const response = await axios.post(baseURL + "login", credentials)
     localStorage.setItem("token", response.data)
+    localStorage.setItem("username", credentials.username)
     console.log(response.data)
     return response.data
   } catch (error) {
@@ -48,7 +49,8 @@ export async function getUserDetails() {
 
 export async function logoutUser() {
   try {
-    localStorage.removeItem("token") // Remove the token from localStorage
+    localStorage.removeItem("token")
+    localStorage.removeItem("username")
   } catch (error) {
     throw error
   }
