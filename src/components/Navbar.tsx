@@ -61,11 +61,10 @@ const Navbar = () => {
               <a className="nav-link" href="/change-password">
                 Ändra Lösenord
               </a>
-              <form action="/perform_logout" method="post" className="d-flex">
-                <button onClick={handleLogout} className="btn btn-danger">
-                  Logga ut
-                </button>
-              </form>
+
+              <button onClick={handleLogout} className="btn btn-danger">
+                Logga ut
+              </button>
             </div>
           </div>
         </div>

@@ -47,7 +47,7 @@ export async function getUserDetails() {
 export async function logoutUser() {
   try {
     console.log("1")
-    await axios.get("logout")
+    await axios.get(baseURL + "logout")
     console.log("2")
     localStorage.removeItem("token")
     console.log("3")
