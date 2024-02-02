@@ -15,7 +15,6 @@ export interface NavbarProps {
 }
 
 export interface AdminProps {
-  username: string
   handleLogout: () => void
 }
 

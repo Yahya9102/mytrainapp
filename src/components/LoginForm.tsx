@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { loginUser } from "../service/userService"
-import { LoginFormProps } from "../Types"
 
-function LoginForm({ setIsAuthenticated, setGlobalUsername }: LoginFormProps) {
+function LoginForm() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
@@ -11,8 +10,7 @@ function LoginForm({ setIsAuthenticated, setGlobalUsername }: LoginFormProps) {
     e.preventDefault()
     try {
       await loginUser({ username, password })
-      setIsAuthenticated(true)
-      setGlobalUsername(username)
+
       setError("")
     } catch (err) {
       console.error("Login error", err)
