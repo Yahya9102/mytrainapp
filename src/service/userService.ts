@@ -55,10 +55,13 @@ export async function logoutUser() {
     throw error
   }
 }
-
-export async function getTrainDetails() {
+export async function getTrainDetails(stationName: string, searchDate: string) {
   try {
-    const response = await axios.get(baseURL + "testing", {
+    const url = new URL(baseURL + "stations")
+    if (stationName) url.searchParams.append("stationName", stationName)
+    if (searchDate) url.searchParams.append("searchDate", searchDate)
+
+    const response = await axios.get(url.toString(), {
       withCredentials: true,
     })
     return response.data

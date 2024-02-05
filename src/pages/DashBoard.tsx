@@ -1,25 +1,55 @@
-import React, { useEffect, useState } from "react"
+import React, { useState, useEffect } from "react"
 import { getTrainDetails } from "../service/userService"
 import { TrainAnnouncement } from "../Types"
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const [data, setData] = useState<TrainAnnouncement[]>([])
+  const [stationName, setStationName] = useState("")
+  const [searchDate, setSearchDate] = useState("")
 
-  useEffect(() => {
-    const fetchTrainDetails = async () => {
-      try {
-        const trainDetailsResponse = await getTrainDetails()
-        setData(trainDetailsResponse)
-      } catch (error) {
-        console.error("Error fetching train details:", error)
-      }
+  const handleSearch = async (e: { preventDefault: () => void }) => {
+    e.preventDefault() // Förhindra att formuläret skickas traditionellt
+    try {
+      const trainDetailsResponse = await getTrainDetails(
+        stationName,
+        searchDate
+      )
+      setData(trainDetailsResponse)
+    } catch (error) {
+      console.error("Error fetching train details:", error)
     }
-    fetchTrainDetails()
-  }, [])
+  }
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-3">Tågankomster</h1>
+      <h1 className="mb-3">Försenade Tåg</h1>
+      <form onSubmit={handleSearch} className="mb-4">
+        <div className="form-group">
+          <label htmlFor="stationName">Station Namn:</label>
+          <input
+            type="text"
+            id="stationName"
+            className="form-control"
+            value={stationName}
+            onChange={(e) => setStationName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="searchDate">Datum:</label>
+          <input
+            type="date"
+            id="searchDate"
+            className="form-control"
+            value={searchDate}
+            onChange={(e) => setSearchDate(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-success">
+          SÖK
+        </button>
+      </form>
+
       <ul className="list-group">
         {data.map((item) => (
           <li
