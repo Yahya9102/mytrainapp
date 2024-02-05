@@ -46,15 +46,23 @@ export async function getUserDetails() {
 
 export async function logoutUser() {
   try {
-    console.log("1")
     await axios.get(baseURL + "logout")
-    console.log("2")
+
     localStorage.removeItem("token")
-    console.log("3")
-    window.location.href = "/"
-    console.log("4")
+
+    window.location.href = "/LoginPage"
   } catch (error) {
-    console.log("1E")
+    throw error
+  }
+}
+
+export async function getTrainDetails() {
+  try {
+    const response = await axios.get(baseURL + "testing", {
+      withCredentials: true,
+    })
+    return response.data
+  } catch (error) {
     throw error
   }
 }

@@ -22,3 +22,12 @@ export interface LoginFormProps {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>
   setGlobalUsername: React.Dispatch<React.SetStateAction<string>>
 }
+
+export interface TrainAnnouncement {
+  id: number
+  trainNumber: string
+  station: string
+  originalArrivalTime: string
+  delayMinutes: number
+  newEstimatedTime: string
+}
