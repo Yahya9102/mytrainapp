@@ -1,15 +1,20 @@
-import "./App.css"
+// App.tsx
+import React from "react"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import LoginForm from "./components/LoginForm"
 import AdminPage from "./pages/AdminPage"
 import Dashboard from "./pages/DashBoard"
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="container mt-5">
-      <AdminPage />
-      <Dashboard />
-      <LoginForm />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        {/* Dashboard är nu tillgänglig för alla */}
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

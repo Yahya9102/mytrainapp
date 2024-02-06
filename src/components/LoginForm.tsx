@@ -1,16 +1,18 @@
 import React, { useState } from "react"
 import { loginUser } from "../service/userService"
+import { useNavigate } from "react-router-dom"
 
 function LoginForm() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
       await loginUser({ username, password })
-
+      navigate("/")
       setError("")
     } catch (err) {
       console.error("Login error", err)

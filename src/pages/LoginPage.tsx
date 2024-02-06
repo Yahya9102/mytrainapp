@@ -1,5 +1,3 @@
-// LoginPage component
-
 import LoginForm from "../components/LoginForm"
 
 const LoginPage = () => {

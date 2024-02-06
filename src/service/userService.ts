@@ -49,8 +49,6 @@ export async function logoutUser() {
     await axios.get(baseURL + "logout")
 
     localStorage.removeItem("token")
-
-    window.location.href = "/LoginPage"
   } catch (error) {
     throw error
   }
