@@ -65,6 +65,7 @@ const Dashboard = () => {
             >
               <div>
                 <h5 className="mb-1">Tågnummer: {item.trainNumber}</h5>
+                <p className="mb-1">Tågbolag: {item.trainOwner}</p>
                 <p className="mb-1">Station: {item.station}</p>
                 <small>Original ankomsttid: {item.originalArrivalTime}</small>
               </div>

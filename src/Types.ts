@@ -30,4 +30,5 @@ export interface TrainAnnouncement {
   originalArrivalTime: string
   delayMinutes: number
   newEstimatedTime: string
+  trainOwner: String
 }

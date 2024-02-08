@@ -5,6 +5,7 @@ const baseURL = "http://localhost:8080/"
 export async function getUsers() {
   try {
     const response = await axios.get(baseURL + "users")
+
     return response.data
   } catch (error) {
     throw error
@@ -53,6 +54,7 @@ export async function logoutUser() {
     throw error
   }
 }
+
 export async function getTrainDetails(stationName: string, searchDate: string) {
   try {
     const url = new URL(baseURL + "stations")

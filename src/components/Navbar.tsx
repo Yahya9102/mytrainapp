@@ -58,6 +58,9 @@ const Navbar = () => {
               <span className="nav-item nav-link">
                 Välkommen, <span>{username}</span>!
               </span>
+              <Link className="navbar-brand" to="/admin">
+                admin
+              </Link>
               {isAuthenticated ? (
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logga ut
