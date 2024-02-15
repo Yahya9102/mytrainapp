@@ -1,5 +1,7 @@
 import axios from "axios"
 
+import jwt_decode, { jwtDecode } from "jwt-decode"
+
 const baseURL = "http://localhost:8080/"
 
 export async function getUsers() {
@@ -26,11 +28,30 @@ export async function loginUser(credentials: {
   }
 }
 
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token")
+
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    // This ensures token is not null
+    // Assuming jwtDecode is correctly imported as suggested fixes above
+    const decodedToken: any = jwtDecode(token) // Use the correct import method for jwtDecode
+    const currentTime = Date.now() / 1000
+
+    if (decodedToken.exp < currentTime) {
+      try {
+        const response = await axios.post(baseURL + "renewToken")
+        const newToken = response.data
+        localStorage.setItem("token", newToken)
+        config.headers.Authorization = `Bearer ${newToken}`
+      } catch (error) {
+        console.error("Token renewal error: ", error)
+        // Additional error handling as needed
+      }
+    } else {
+      config.headers.Authorization = `Bearer ${token}`
+    }
   }
+
   return config
 })
 

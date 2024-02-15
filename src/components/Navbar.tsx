@@ -13,7 +13,7 @@ const Navbar = () => {
         try {
           const userDetailsResponse = await getUserDetails()
           console.log(userDetailsResponse)
-          setUsername(userDetailsResponse || "Gäst") // Justera beroende på ditt API-svar
+          setUsername(userDetailsResponse || "Gäst")
         } catch (error) {
           console.error("Error fetching user details:", error)
         }
