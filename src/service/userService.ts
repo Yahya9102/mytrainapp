@@ -76,10 +76,15 @@ export async function logoutUser() {
   }
 }
 
-export async function getTrainDetails(stationName: string, searchDate: string) {
+export async function getTrainDetails(
+  stationName: string,
+  trainNumber: string,
+  searchDate: string
+) {
   try {
     const url = new URL(baseURL + "stations")
     if (stationName) url.searchParams.append("stationName", stationName)
+    if (trainNumber) url.searchParams.append("trainNumber", trainNumber)
     if (searchDate) url.searchParams.append("searchDate", searchDate)
 
     const response = await axios.get(url.toString(), {

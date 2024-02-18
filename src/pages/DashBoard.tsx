@@ -7,14 +7,17 @@ const Dashboard = () => {
   const [data, setData] = useState<TrainAnnouncement[]>([])
   const [stationName, setStationName] = useState("")
   const [searchDate, setSearchDate] = useState("")
+  const [trainNumber, setTrainNumber] = useState("")
 
   const handleSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     try {
       const trainDetailsResponse = await getTrainDetails(
         stationName,
+        trainNumber,
         searchDate
       )
+      console.log(trainNumber, searchDate, stationName)
       setData(trainDetailsResponse)
     } catch (error) {
       console.error("Error fetching train details:", error)
@@ -41,6 +44,19 @@ const Dashboard = () => {
             />
           </div>
           <div className="mb-3">
+            <label htmlFor="trainNumber" className="form-label">
+              Tågnummer:
+            </label>
+            <input
+              type="text"
+              id="trainNumber"
+              className="form-control"
+              value={trainNumber}
+              onChange={(e) => setTrainNumber(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-3">
             <label htmlFor="searchDate" className="form-label">
               Datum:
             </label>
@@ -58,9 +74,9 @@ const Dashboard = () => {
         </form>
 
         <ul className="list-group">
-          {data.map((item) => (
+          {data.map((item, index) => (
             <li
-              key={item.id}
+              key={item.id ? item.id : `item-${index}`}
               className="list-group-item d-flex justify-content-between align-items-center"
             >
               <div>
