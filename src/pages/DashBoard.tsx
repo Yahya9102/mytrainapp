@@ -84,6 +84,14 @@ const Dashboard = () => {
                 <p className="mb-1">Tågbolag: {item.trainOwner}</p>
                 <p className="mb-1">Station: {item.station}</p>
                 <small>Original ankomsttid: {item.originalArrivalTime}</small>
+                {item.trainOwner === "MÄLAB" && (
+                  <a
+                    href="https://malartag.se/kundservice/ersattning-vid-forsening/"
+                    className="d-block mt-2"
+                  >
+                    Sök ersättning
+                  </a>
+                )}
               </div>
               <span className="badge bg-primary rounded-pill">
                 {item.delayMinutes} min försening
