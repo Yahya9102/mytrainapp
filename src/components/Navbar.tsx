@@ -42,7 +42,15 @@ const Navbar = () => {
           <Link className="navbar-brand" to="/">
             Försenade Tåg
           </Link>
-          <button
+
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav ms-auto">
+              <span className="nav-item nav-link">Välkommen!</span>
+
+              {/*
+
+
+  <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -53,14 +61,13 @@ const Navbar = () => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav ms-auto">
-              <span className="nav-item nav-link">
-                Välkommen, <span>{username}</span>!
-              </span>
-              <Link className="navbar-brand" to="/admin">
+
+              , <span>{username}</span>
+                  <Link className="navbar-brand" to="/admin">
                 admin
               </Link>
+
+              
               {isAuthenticated ? (
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logga ut
@@ -70,6 +77,9 @@ const Navbar = () => {
                   Logga in
                 </Link>
               )}
+              
+              
+              */}
             </div>
           </div>
         </div>

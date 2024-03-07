@@ -43,7 +43,7 @@ const Dashboard = () => {
               required
             />
           </div>
-          <div className="mb-3">
+          {/*     <div className="mb-3">
             <label htmlFor="trainNumber" className="form-label">
               Tågnummer:
             </label>
@@ -55,6 +55,7 @@ const Dashboard = () => {
               onChange={(e) => setTrainNumber(e.target.value)}
             />
           </div>
+  */}
 
           <div className="mb-3">
             <label htmlFor="searchDate" className="form-label">
