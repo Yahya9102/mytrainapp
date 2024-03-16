@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { getTrainDetails } from "../service/userService"
 import { TrainAnnouncement } from "../Types"
 import Navbar from "../components/Navbar"
@@ -17,6 +17,7 @@ const Dashboard = () => {
         trainNumber,
         searchDate
       )
+      console.log(setTrainNumber)
       console.log(trainNumber, searchDate, stationName)
       setData(trainDetailsResponse)
     } catch (error) {

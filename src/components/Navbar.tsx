@@ -96,8 +96,7 @@ const Navbar = () => {
 
 export default Navbar
 
-{
-  /*
+/*
 
 
   <button
@@ -130,4 +129,3 @@ export default Navbar
               
               
               */
-}

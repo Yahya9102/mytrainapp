@@ -1,8 +1,7 @@
 // App.tsx
 import React from "react"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import LoginForm from "./components/LoginForm"
-import AdminPage from "./pages/AdminPage"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import Dashboard from "./pages/DashBoard"
 
 const App: React.FC = () => {
