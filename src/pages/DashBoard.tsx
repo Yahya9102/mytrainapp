@@ -97,8 +97,7 @@ const Dashboard = () => {
 
 export default Dashboard
 
-{
-  /*     <div className="mb-3">
+/*     <div className="mb-3">
             <label htmlFor="trainNumber" className="form-label">
               Tågnummer:
             </label>
@@ -111,4 +110,3 @@ export default Dashboard
             />
           </div>
   */
-}

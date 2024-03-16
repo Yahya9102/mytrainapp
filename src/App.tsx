@@ -15,9 +15,8 @@ const App: React.FC = () => {
 }
 
 export default App
-{
-  /* Dashboard är nu tillgänglig för alla 
+
+/* Dashboard är nu tillgänglig för alla 
         <Route path="/login" element={<LoginForm />} />
         <Route path="/admin" element={<AdminPage />} />
         */
-}
