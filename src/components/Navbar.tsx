@@ -5,6 +5,7 @@ import { getUserDetails, logoutUser } from "../service/userService"
 const Navbar = () => {
   const [username, setUsername] = useState("")
   const navigate = useNavigate()
+  const [showModal, setShowModal] = useState(false)
   const isAuthenticated = Boolean(localStorage.getItem("token"))
 
   useEffect(() => {
@@ -35,19 +36,68 @@ const Navbar = () => {
     }
   }
 
+  const toggleModal = () => setShowModal(!showModal)
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            Försenade Tåg
+            <img
+              src="/bgimg-removebg-preview.png"
+              alt="Bilden kunde inte laddas"
+              width={100}
+            />
           </Link>
 
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav ms-auto">
-              <span className="nav-item nav-link">Välkommen!</span>
+          <button onClick={toggleModal} className="btn btn-info">
+            Visa Info
+          </button>
+        </div>
+      </nav>
 
-              {/*
+      {/* Modal för Info */}
+      <div
+        className={`modal ${showModal ? "show" : ""}`}
+        tabIndex={-1}
+        style={{ display: showModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Info om tjänsten</h5>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={toggleModal}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>
+                Den här tjänsten är till för att enkelt hitta tåg som har varit
+                försenade under dagen och söka ersättning på respektive bolag.
+              </p>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={toggleModal}
+              >
+                Stäng
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
+
+{
+  /*
 
 
   <button
@@ -79,13 +129,5 @@ const Navbar = () => {
               )}
               
               
-              */}
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  )
+              */
 }
-
-export default Navbar

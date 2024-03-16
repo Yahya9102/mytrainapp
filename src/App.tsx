@@ -10,9 +10,10 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        {/* Dashboard är nu tillgänglig för alla */}
+        {/* Dashboard är nu tillgänglig för alla 
         <Route path="/login" element={<LoginForm />} />
         <Route path="/admin" element={<AdminPage />} />
+        */}
       </Routes>
     </BrowserRouter>
   )

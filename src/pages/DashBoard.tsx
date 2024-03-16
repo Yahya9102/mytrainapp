@@ -28,8 +28,8 @@ const Dashboard = () => {
     <>
       <Navbar />
       <div className="container mt-5">
-        <h1 className="mb-3">Försenade Tåg</h1>
-        <form onSubmit={handleSearch} className="mb-4">
+        <h1 className="mb-3 text-center text-secondary">Försenade Tåg</h1>
+        <form onSubmit={handleSearch} className="mb-4 border p-4 shadow">
           <div className="mb-3">
             <label htmlFor="stationName" className="form-label">
               Station Namn:
@@ -43,19 +43,6 @@ const Dashboard = () => {
               required
             />
           </div>
-          {/*     <div className="mb-3">
-            <label htmlFor="trainNumber" className="form-label">
-              Tågnummer:
-            </label>
-            <input
-              type="text"
-              id="trainNumber"
-              className="form-control"
-              value={trainNumber}
-              onChange={(e) => setTrainNumber(e.target.value)}
-            />
-          </div>
-  */}
 
           <div className="mb-3">
             <label htmlFor="searchDate" className="form-label">
@@ -69,7 +56,7 @@ const Dashboard = () => {
               onChange={(e) => setSearchDate(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-primary w-100">
             SÖK
           </button>
         </form>
@@ -78,7 +65,7 @@ const Dashboard = () => {
           {data.map((item, index) => (
             <li
               key={item.id ? item.id : `item-${index}`}
-              className="list-group-item d-flex justify-content-between align-items-center"
+              className="list-group-item d-flex justify-content-between align-items-center shadow-sm p-3 mb-2 bg-white rounded"
             >
               <div>
                 <h5 className="mb-1">Tågnummer: {item.trainNumber}</h5>
@@ -89,12 +76,14 @@ const Dashboard = () => {
                   <a
                     href="https://malartag.se/kundservice/ersattning-vid-forsening/"
                     className="d-block mt-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Sök ersättning
                   </a>
                 )}
               </div>
-              <span className="badge bg-primary rounded-pill">
+              <span className="badge bg-warning rounded-pill">
                 {item.delayMinutes} min försening
               </span>
             </li>
@@ -106,3 +95,19 @@ const Dashboard = () => {
 }
 
 export default Dashboard
+
+{
+  /*     <div className="mb-3">
+            <label htmlFor="trainNumber" className="form-label">
+              Tågnummer:
+            </label>
+            <input
+              type="text"
+              id="trainNumber"
+              className="form-control"
+              value={trainNumber}
+              onChange={(e) => setTrainNumber(e.target.value)}
+            />
+          </div>
+  */
+}
