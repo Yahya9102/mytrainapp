@@ -1,9 +1,5 @@
 import axios from "axios"
 
-import jwt_decode, { jwtDecode } from "jwt-decode"
-
-const baseURL = "http://localhost:8080/"
-
 export async function getUsers() {
   try {
     const response = await axios.get(baseURL + "users")
@@ -27,6 +23,13 @@ export async function loginUser(credentials: {
     throw error
   }
 }
+/*
+
+
+import jwt_decode, { jwtDecode } from "jwt-decode"
+
+
+
 
 axios.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token")
@@ -75,6 +78,10 @@ export async function logoutUser() {
     throw error
   }
 }
+
+*/
+
+const baseURL = "http://localhost:8080/"
 
 export async function getTrainDetails(
   stationName: string,

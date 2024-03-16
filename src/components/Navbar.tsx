@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { getUserDetails, logoutUser } from "../service/userService"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
-  const [username, setUsername] = useState("")
-  const navigate = useNavigate()
   const [showModal, setShowModal] = useState(false)
-  const isAuthenticated = Boolean(localStorage.getItem("token"))
 
+  /*
+    const isAuthenticated = Boolean(localStorage.getItem("token"))
+  const navigate = useNavigate()
+    const [username, setUsername] = useState("")
   useEffect(() => {
     if (isAuthenticated) {
       const fetchUserDetails = async () => {
@@ -36,6 +36,7 @@ const Navbar = () => {
     }
   }
 
+  */
   const toggleModal = () => setShowModal(!showModal)
 
   return (
@@ -56,7 +57,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Modal för Info */}
       <div
         className={`modal ${showModal ? "show" : ""}`}
         tabIndex={-1}
