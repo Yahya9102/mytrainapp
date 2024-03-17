@@ -74,45 +74,54 @@ const Navbar = () => {
             </div>
             <div className="modal-body">
               <p>
-                Användarvillkor för MTRE Välkommen till MTRE! Vi tillhandahåller
-                en tjänst som syftar till att underlätta för resenärer i
-                Mälardalen genom att tillhandahålla uppdaterad information om
-                tågförseningar.
+                Användarvillkor för Mälardalens trafik reseersättning
                 <br />
                 <br />
-                Tjänsten är avsedd att användas som en guide för att hjälpa dig
-                att navigera i dina resplaner.
+                Välkommen till MTRE!
+                <br />
+                Vi tillhandahåller en tjänst som syftar till att underlätta för
+                resenärer i Mälardalen genom att tillhandahålla uppdaterad
+                information om tågförseningar.
                 <br />
                 <br />
-                1. Accept av Villkor Genom att använda MTRE, godkänner du dessa
-                användarvillkor. Om du inte godkänner villkoren, bör du inte
-                använda vår tjänst.
+                Tjänsten är avsedd att fungera som en guide för att hjälpa dig
+                hitta information om försenade tåg i Mälardalen och underlätta
+                processen att ansöka om ersättning vid förseningar.
                 <br />
                 <br />
-                2. Tjänstens Natur och Användning Tjänsten är gratis och kräver
-                ingen inloggning. För närvarande är tjänsten endast tillgänglig
-                för resenärer inom Mälardalen. MTRE tillhandahåller information
-                om tågförseningar baserat på tillgängliga data. Användarna
-                uppmanas att använda informationen som en guide och alltid
-                dubbelkolla tågtiderna från flera källor för att få de mest
-                exakta uppdateringarna.
+                1. Accept av Villkor
+                <br />
+                Genom att använda MTRE, godkänner du dessa användarvillkor. Om
+                du inte godkänner villkoren, bör du inte använda vår tjänst.
                 <br />
                 <br />
-                3. Ansvarsfriskrivning Medan MTRE strävar efter att
-                tillhandahålla korrekt och aktuell information, kan det finnas
-                fall där information om tågförseningar kan skilja sig någon
-                minut. Vi tar inget ansvar för eventuella felaktigheter i den
-                tillhandahållna informationen eller för några förluster eller
-                skador som uppstår som ett resultat av att förlita sig på denna
-                information. MTRE är inte ansvarig för innehållet på externa
-                webbplatser som kan länkas till från vår tjänst.
+                2. Tjänstens Natur och Användning <br />
+                Tjänsten är gratis och kräver ingen inloggning. För närvarande
+                är tjänsten endast tillgänglig för resenärer inom Mälardalen.
+                MTRE tillhandahåller information om tågförseningar baserat på
+                tillgängliga data. Användarna uppmanas att använda informationen
+                som en guide och alltid dubbelkolla tågtiderna från flera källor
+                för att få de mest exakta uppdateringarna.
                 <br />
                 <br />
-                4. Ändringar i Tjänsten och Villkoren MTRE förbehåller sig
-                rätten att när som helst ändra eller avbryta tjänsten utan
-                förvarning. Vi förbehåller oss även rätten att ändra dessa
-                användarvillkor. Eventuella ändringar träder i kraft när de
-                publiceras på vår webbplats.
+                3. Ansvarsfriskrivning
+                <br />
+                Medan MTRE strävar efter att tillhandahålla korrekt och aktuell
+                information, kan det finnas fall där information om
+                tågförseningar kan skilja sig någon minut. Vi tar inget ansvar
+                för eventuella felaktigheter i den tillhandahållna informationen
+                eller för några förluster eller skador som uppstår som ett
+                resultat av att förlita sig på denna information. MTRE är inte
+                ansvarig för innehållet på externa webbplatser som kan länkas
+                till från vår tjänst.
+                <br />
+                <br />
+                4. Ändringar i Tjänsten och Villkoren
+                <br />
+                MTRE förbehåller sig rätten att när som helst ändra eller
+                avbryta tjänsten utan förvarning. Vi förbehåller oss även rätten
+                att ändra dessa användarvillkor. Eventuella ändringar träder i
+                kraft när de publiceras på vår webbplats.
                 <br />
                 <br />
                 5. Integritetspraxis Eftersom tjänsten är gratis och inte kräver
@@ -120,9 +129,11 @@ const Navbar = () => {
                 våra användare. Genom att använda MTRE accepterar du dessa
                 villkor i sin helhet.
                 <br />
+                <br />
                 Kom ihåg att alltid dubbelkolla tågtiderna från pålitliga källor
                 för att försäkra dig om att du har den mest exakta och
-                uppdaterade informationen.
+                uppdaterade informationen. All vår data kommer från
+                Trafikverket.
               </p>
             </div>
             <div className="modal-footer">

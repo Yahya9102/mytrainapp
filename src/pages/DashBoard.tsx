@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [data, setData] = useState<TrainAnnouncement[]>([])
   const [stationName, setStationName] = useState("")
   const [searchDate, setSearchDate] = useState("")
-  const [trainNumber, setTrainNumber] = useState("")
+  const [trainNumber] = useState("")
 
   const handleSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
@@ -17,8 +17,7 @@ const Dashboard = () => {
         trainNumber,
         searchDate
       )
-      console.log(setTrainNumber)
-      console.log(trainNumber, searchDate, stationName)
+
       setData(trainDetailsResponse)
     } catch (error) {
       console.error("Error fetching train details:", error)

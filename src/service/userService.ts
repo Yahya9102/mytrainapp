@@ -83,9 +83,6 @@ export async function logoutUser() {
 
 const baseURL = "http://localhost:8080/"
 
-const trainInfoApiKey = process.env.TRAIN_INFO_API_KEY
-const trainInfoHeader: string = process.env.TRAIN_INFO_HEADER as string
-
 export async function getTrainDetails(
   stationName: string,
   trainNumber: string,
@@ -99,7 +96,8 @@ export async function getTrainDetails(
 
     const response = await axios.get(url.toString(), {
       headers: {
-        [trainInfoHeader]: trainInfoApiKey, // Include your API key in the request header
+        [process.env.REACT_APP_TRAIN_INFO_HEADER as string]: process.env
+          .REACT_APP_TRAIN_INFO_API_KEY as string,
       },
       withCredentials: true,
     })
