@@ -81,7 +81,7 @@ export async function logoutUser() {
 
 */
 
-const baseURL = "http://localhost:8080/"
+const baseURL = process.env.REACT_APP_BASE_URL
 
 export async function getTrainDetails(
   stationName: string,
