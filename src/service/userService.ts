@@ -1,5 +1,9 @@
 import axios from "axios"
 
+/*
+
+
+
 export async function getUsers() {
   try {
     const response = await axios.get(baseURL + "users")
@@ -23,6 +27,8 @@ export async function loginUser(credentials: {
     throw error
   }
 }
+
+*/
 /*
 
 
@@ -81,7 +87,7 @@ export async function logoutUser() {
 
 */
 
-const baseURL = process.env.REACT_APP_BASE_URL
+//const baseURL = process.env.REACT_APP_BASE_URL
 
 //const baseURL = "http://localhost:8080/"
 export async function getTrainDetails(
@@ -90,7 +96,10 @@ export async function getTrainDetails(
   searchDate: string
 ) {
   try {
-    const url = new URL(baseURL + "stations")
+    const url = new URL(
+      "http://traininfoprod-env.eba-hp223mk4.eu-north-1.elasticbeanstalk.com/" +
+        "stations"
+    )
     if (stationName) url.searchParams.append("stationName", stationName)
     if (trainNumber) url.searchParams.append("trainNumber", trainNumber)
     if (searchDate) url.searchParams.append("searchDate", searchDate)
