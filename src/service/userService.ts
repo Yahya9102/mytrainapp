@@ -2,7 +2,7 @@ import axios from "axios"
 
 export async function getUsers() {
   try {
-    const response = await axios.get("baseURL" + "users")
+    const response = await axios.get("baseURLusers")
 
     return response.data
   } catch (error) {
@@ -15,7 +15,7 @@ export async function loginUser(credentials: {
   password: string
 }) {
   try {
-    const response = await axios.post("baseURL" + "login", credentials)
+    const response = await axios.post("baseURLlogin", credentials)
     localStorage.setItem("token", response.data)
 
     return response.data
@@ -83,29 +83,24 @@ export async function logoutUser() {
 
 //const baseURL = process.env.REACT_APP_BASE_URL
 
-//const baseURL = "http://localhost:8080/"
+const baseURL = "http://localhost:5000/"
+
 export async function getTrainDetails(
   stationName: string,
   trainNumber: string,
   searchDate: string
 ) {
   try {
-    const url = new URL(
-      "http://traininfoprod-env.eba-hp223mk4.eu-north-1.elasticbeanstalk.com/" +
-        "stations"
-    )
+    const url = new URL(baseURL + "stations")
     if (stationName) url.searchParams.append("stationName", stationName)
-    if (trainNumber) url.searchParams.append("trainNumber", trainNumber)
     if (searchDate) url.searchParams.append("searchDate", searchDate)
 
     const response = await axios.get(url.toString(), {
       headers: {
-        ["trainInfo"]: "0f83f5c3-7be8-4e41-b54d-8588e9e57e82",
+        trainInfo: "0f83f5c3-7be8-4e41-b54d-8588e9e57e82",
       },
       withCredentials: true,
     })
-
-    console.log(response.data)
 
     return response.data
   } catch (error) {
