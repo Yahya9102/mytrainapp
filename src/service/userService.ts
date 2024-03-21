@@ -100,11 +100,12 @@ export async function getTrainDetails(
 
     const response = await axios.get(url.toString(), {
       headers: {
-        [process.env.REACT_APP_TRAIN_INFO_HEADER as string]: process.env
-          .REACT_APP_TRAIN_INFO_API_KEY as string,
+        ["trainInfo"]: "0f83f5c3-7be8-4e41-b54d-8588e9e57e82",
       },
       withCredentials: true,
     })
+
+    console.log(response.data)
 
     return response.data
   } catch (error) {
