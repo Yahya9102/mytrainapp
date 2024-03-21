@@ -1,12 +1,8 @@
 import axios from "axios"
 
-/*
-
-
-
 export async function getUsers() {
   try {
-    const response = await axios.get(baseURL + "users")
+    const response = await axios.get("baseURL" + "users")
 
     return response.data
   } catch (error) {
@@ -19,7 +15,7 @@ export async function loginUser(credentials: {
   password: string
 }) {
   try {
-    const response = await axios.post(baseURL + "login", credentials)
+    const response = await axios.post("baseURL" + "login", credentials)
     localStorage.setItem("token", response.data)
 
     return response.data
@@ -28,9 +24,7 @@ export async function loginUser(credentials: {
   }
 }
 
-*/
 /*
-
 
 import jwt_decode, { jwtDecode } from "jwt-decode"
 
