@@ -83,7 +83,8 @@ export async function logoutUser() {
 
 //const baseURL = process.env.REACT_APP_BASE_URL
 
-const baseURL = "http://localhost:5000/"
+const baseURL =
+  "http://traininfoprod-env.eba-hp223mk4.eu-north-1.elasticbeanstalk.com/"
 
 export async function getTrainDetails(
   stationName: string,
