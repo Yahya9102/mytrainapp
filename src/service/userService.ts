@@ -100,9 +100,7 @@ export async function getTrainDetails(
     if (stationName) url.searchParams.append("stationName", stationName)
     if (searchDate) url.searchParams.append("searchDate", searchDate)
 
-    const response = await axios.get(url.toString(), {
-      withCredentials: true,
-    })
+    const response = await axios.get(url.toString())
 
     return response.data
   } catch (error) {
