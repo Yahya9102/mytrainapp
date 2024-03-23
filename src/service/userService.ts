@@ -78,7 +78,9 @@ export async function logoutUser() {
     throw error
   }
 }
-
+   headers: {
+        trainInfo: "0f83f5c3-7be8-4e41-b54d-8588e9e57e82",
+      },
 */
 
 //const baseURL = process.env.REACT_APP_BASE_URL
@@ -93,13 +95,12 @@ export async function getTrainDetails(
 ) {
   try {
     const url = new URL(baseURL + "stations")
+
+    console.log(url)
     if (stationName) url.searchParams.append("stationName", stationName)
     if (searchDate) url.searchParams.append("searchDate", searchDate)
 
     const response = await axios.get(url.toString(), {
-      headers: {
-        trainInfo: "0f83f5c3-7be8-4e41-b54d-8588e9e57e82",
-      },
       withCredentials: true,
     })
 
