@@ -83,9 +83,7 @@ export async function logoutUser() {
       },
 */
 
-//const baseURL = process.env.REACT_APP_BASE_URL
-
-const baseURL = "https://ec2-13-50-216-247.eu-north-1.compute.amazonaws.com/"
+const baseURL = process.env.REACT_APP_BASE_URL
 
 export async function getTrainDetails(
   stationName: string,
@@ -95,7 +93,6 @@ export async function getTrainDetails(
   try {
     const url = new URL(baseURL + "stations")
 
-    console.log(url)
     if (stationName) url.searchParams.append("stationName", stationName)
     if (searchDate) url.searchParams.append("searchDate", searchDate)
 
