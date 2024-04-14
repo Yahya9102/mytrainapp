@@ -9,6 +9,18 @@ const Dashboard = () => {
   const [searchDate, setSearchDate] = useState("")
   const [trainNumber] = useState("")
 
+  const handleStationNameChange = (value: string) => {
+    // Kontrollerar om texten är tom för att undvika fel.
+    if (!value) {
+      setStationName("")
+      return
+    }
+
+    // Formatterar första bokstaven till stor bokstav och behåller resten som den är.
+    const formattedValue = value.charAt(0).toUpperCase() + value.slice(1)
+    setStationName(formattedValue)
+  }
+
   const handleSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     try {
@@ -17,7 +29,6 @@ const Dashboard = () => {
         trainNumber,
         searchDate
       )
-
       setData(trainDetailsResponse)
     } catch (error) {
       console.error("Error fetching train details:", error)
@@ -39,7 +50,7 @@ const Dashboard = () => {
               id="stationName"
               className="form-control"
               value={stationName}
-              onChange={(e) => setStationName(e.target.value)}
+              onChange={(e) => handleStationNameChange(e.target.value)}
               required
             />
           </div>
