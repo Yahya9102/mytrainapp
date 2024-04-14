@@ -10,13 +10,11 @@ const Dashboard = () => {
   const [trainNumber] = useState("")
 
   const handleStationNameChange = (value: string) => {
-    // Kontrollerar om texten är tom för att undvika fel.
     if (!value) {
       setStationName("")
       return
     }
 
-    // Formatterar första bokstaven till stor bokstav och behåller resten som den är.
     const formattedValue = value.charAt(0).toUpperCase() + value.slice(1)
     setStationName(formattedValue)
   }
