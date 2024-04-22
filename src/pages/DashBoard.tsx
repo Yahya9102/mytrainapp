@@ -37,7 +37,10 @@ const Dashboard = () => {
     <>
       <Navbar />
       <div className="container mt-5">
-        <h1 className="mb-3 text-center text-secondary">Försenade Tåg</h1>
+        <h1 className="mb-3 text-center text-secondary">
+          Sök efter försenade tåg i mälardalen
+        </h1>
+        <p className="mb-3 text-center text-secondary"></p>
         <form onSubmit={handleSearch} className="mb-4 border p-4 shadow">
           <div className="mb-3">
             <label htmlFor="stationName" className="form-label">
