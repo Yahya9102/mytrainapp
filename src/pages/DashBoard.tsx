@@ -50,7 +50,7 @@ const Dashboard = () => {
               type="text"
               id="stationName"
               className="form-control"
-              value={stationName}
+              value={stationName.trim()}
               onChange={(e) => handleStationNameChange(e.target.value)}
               required
             />
