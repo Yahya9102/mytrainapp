@@ -86,7 +86,7 @@ const Dashboard = () => {
                 <small>Original ankomsttid: {item.originalArrivalTime}</small>
                 {item.trainOwner === "MÄLAB" && (
                   <a
-                    href="https://malartag.se/kundservice/ersattning-vid-forsening/"
+                    href="https://evf-regionsormland.preciocloudapp.net/trains"
                     className="d-block mt-2"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -96,7 +96,7 @@ const Dashboard = () => {
                 )}
               </div>
               <span className="badge bg-warning rounded-pill">
-                {item.delayMinutes} min försening
+                {item.delayMinutes} min försening 
               </span>
             </li>
           ))}
