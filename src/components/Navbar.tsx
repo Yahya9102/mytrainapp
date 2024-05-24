@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
 
           <button onClick={toggleModal} className="btn btn-info">
-            Visa Info
+            Info
           </button>
         </div>
       </nav>
