@@ -1,37 +1,87 @@
-import React, { useState } from "react"
-import { getTrainDetails } from "../service/userService"
-import { TrainAnnouncement } from "../Types"
-import Navbar from "../components/Navbar"
+import React, { useState } from "react";
+import { getTrainDetails } from "../service/userService";
+import { TrainAnnouncement } from "../Types";
+import Navbar from "../components/Navbar";
+
+const stations = [
+  "Eskilstuna",
+  "Stockholm",
+  "Uppsala",
+  "Örebro",
+  "Arboga",
+  "Kungsör",
+  "Strängnäs",
+  "Läggesta",
+  "Nykvarn",
+  "Södertälje",
+  "Flemingsberg",
+  "Arlanda",
+  "Märsta",
+  "Knivsta",
+  "Sala",
+  "Ransta",
+  "Västerås",
+  "Kolbäck",
+  "Kvicksund",
+  "Hälleforsnäs",
+  "Flen",
+  "Katrineholm",
+  "Norrköping",
+  "Linköping",
+];
 
 const Dashboard = () => {
-  const [data, setData] = useState<TrainAnnouncement[]>([])
-  const [stationName, setStationName] = useState("")
-  const [searchDate, setSearchDate] = useState("")
-  const [trainNumber] = useState("")
+  const [data, setData] = useState<TrainAnnouncement[]>([]);
+  const [stationName, setStationName] = useState("");
+  const [searchDate, setSearchDate] = useState("");
+  const [trainNumber] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleStationNameChange = (value: string) => {
     if (!value) {
-      setStationName("")
-      return
+      setStationName("");
+      setSuggestions([]);
+      return;
     }
 
-    const formattedValue = value.charAt(0).toUpperCase() + value.slice(1)
-    setStationName(formattedValue)
-  }
+    const formattedValue = value.charAt(0).toUpperCase() + value.slice(1);
+    setStationName(formattedValue);
+
+    const filteredSuggestions = stations.filter((station) =>
+      station.toLowerCase().startsWith(formattedValue.toLowerCase())
+    );
+    setSuggestions(filteredSuggestions);
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setStationName(suggestion);
+    setSuggestions([]);
+  };
+
+  const handleStationListClick = (station: string) => {
+    setStationName(station);
+    setSuggestions([]);
+    setShowDropdown(false);
+  };
 
   const handleSearch = async (e: { preventDefault: () => void }) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const trainDetailsResponse = await getTrainDetails(
         stationName,
         trainNumber,
         searchDate
-      )
-      setData(trainDetailsResponse)
+      );
+      setData(trainDetailsResponse);
     } catch (error) {
-      console.error("Error fetching train details:", error)
+      console.error("Error fetching train details:", error);
     }
-  }
+  };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   return (
     <>
@@ -42,20 +92,58 @@ const Dashboard = () => {
         </h1>
         <p className="mb-3 text-center text-secondary"></p>
         <form onSubmit={handleSearch} className="mb-4 border p-4 shadow">
-          <div className="mb-3">
-            <label htmlFor="stationName" className="form-label">
-              Station Namn:
-            </label>
-            <input
-              type="text"
-              id="stationName"
-              className="form-control"
-              value={stationName.trim()}
-              onChange={(e) => handleStationNameChange(e.target.value)}
-              required
-            />
+          <div className="mb-3 d-flex align-items-center position-relative">
+            <div className="flex-grow-1">
+              <label htmlFor="stationName" className="form-label">
+                Station Namn:
+              </label>
+              <div className="input-group">
+                <input
+                  type="text"
+                  id="stationName"
+                  className="form-control"
+                  value={stationName.trim()}
+                  onChange={(e) => handleStationNameChange(e.target.value)}
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={toggleDropdown}
+                >
+                  ▼
+                </button>
+              </div>
+              {suggestions.length > 0 && (
+                <ul className="list-group position-absolute w-100">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      className="list-group-item list-group-item-action"
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {suggestion}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
-
+          {showDropdown && (
+            <ul className="list-group mb-3">
+              {stations.map((station, index) => (
+                <li
+                  key={index}
+                  className="list-group-item list-group-item-action"
+                  onClick={() => handleStationListClick(station)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {station}
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="mb-3">
             <label htmlFor="searchDate" className="form-label">
               Datum:
@@ -82,7 +170,7 @@ const Dashboard = () => {
               <div>
                 <h5 className="mb-1">Tågnummer: {item.trainNumber}</h5>
                 <p className="mb-1">Tågbolag: {item.trainOwner}</p>
-                <p className="mb-1">Station: {item.station}</p>
+                <p className="mb-1">Ankomststation: {item.station}</p>
                 <small>Original ankomsttid: {item.originalArrivalTime}</small>
                 {item.trainOwner === "MÄLAB" && (
                   <a
@@ -96,28 +184,14 @@ const Dashboard = () => {
                 )}
               </div>
               <span className="badge bg-warning rounded-pill">
-                {item.delayMinutes} min försening 
+                {item.delayMinutes} min försening
               </span>
             </li>
           ))}
         </ul>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
-
-/*     <div className="mb-3">
-            <label htmlFor="trainNumber" className="form-label">
-              Tågnummer:
-            </label>
-            <input
-              type="text"
-              id="trainNumber"
-              className="form-control"
-              value={trainNumber}
-              onChange={(e) => setTrainNumber(e.target.value)}
-            />
-          </div>
-  */
+export default Dashboard;
