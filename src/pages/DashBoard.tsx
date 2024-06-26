@@ -171,8 +171,7 @@ const Dashboard = () => {
                 <h5 className="mb-1">Tågnummer: {item.trainNumber}</h5>
                 <p className="mb-1">Tågbolag: {item.trainOwner}</p>
                 <p className="mb-1">Ankomststation: {item.station}</p>
-                <small>Original ankomsttid: {item.originalArrivalTime}</small>
-                {item.trainOwner === "MÄLAB" && (
+                {item.trainOwner === "MÄLAB" && item.delayMinutes >= 20 && (
                   <a
                     href="https://evf-regionsormland.preciocloudapp.net/trains"
                     className="d-block mt-2"
@@ -183,7 +182,7 @@ const Dashboard = () => {
                   </a>
                 )}
               </div>
-              <span className="badge bg-warning rounded-pill">
+              <span className={`badge rounded-pill ${item.delayMinutes >= 20 && item.trainOwner === "MÄLAB" ? 'bg-success' : 'bg-warning'}`}>
                 {item.delayMinutes} min försening
               </span>
             </li>
