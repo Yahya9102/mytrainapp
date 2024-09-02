@@ -230,8 +230,6 @@ const Dashboard = () => {
                   item.EstimatedTimeAtLocation
                 );
 
-                const compensation = determineCompensation(delay);
-
                 return delay >= 20;
               })
               .sort((a, b) => {
