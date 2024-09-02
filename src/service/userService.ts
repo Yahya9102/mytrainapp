@@ -1,5 +1,4 @@
 import axios from "axios"
-import { log } from "console"
 
 export async function getUsers() {
   try {
@@ -46,7 +45,6 @@ export async function getTrainDetails(
     };
 
     const response = await axios.get(url.toString(), { headers });
-    console.log(response.data)
     return response.data;
   } catch (error) {
     throw error;

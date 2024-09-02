@@ -136,7 +136,7 @@ const Dashboard = () => {
     return differenceInMinutes > 0 ? differenceInMinutes : 0;
   };
 
-
+/*
   const formatTimeToLocal = (utcDateString: string | number | Date) => {
     const date = new Date(utcDateString);
     return date.toLocaleTimeString('sv-SE', {
@@ -145,6 +145,7 @@ const Dashboard = () => {
         timeZone: 'Europe/Stockholm'
     });
 };
+*/
 
 
   return (
