@@ -223,7 +223,7 @@ const Dashboard = () => {
           <ul className="list-group">
             {data
               .filter((item) => {
-                if (item.TrainOwner !== "MÄLAB") return false;
+                if (item.TrainOwner !== "MÄLAB"  ) return false;
 
                 const delay = calculateDelay(
                   item.AdvertisedTimeAtLocation,
@@ -231,32 +231,6 @@ const Dashboard = () => {
                 );
 
                 return item.Canceled || delay >= 20 ;
-              })
-              .sort((a, b) => {
-                const delayA = calculateDelay(
-                  a.AdvertisedTimeAtLocation,
-                  a.EstimatedTimeAtLocation
-                );
-                const delayB = calculateDelay(
-                  b.AdvertisedTimeAtLocation,
-                  b.EstimatedTimeAtLocation
-                );
-
-                const compensationA = determineCompensation(delayA);
-                const compensationB = determineCompensation(delayB);
-
-                if (
-                  compensationA === "Ingen ersättning" &&
-                  compensationB !== "Ingen ersättning"
-                ) {
-                  return 1; // Placera de utan ersättning längst ner
-                } else if (
-                  compensationA !== "Ingen ersättning" &&
-                  compensationB === "Ingen ersättning"
-                ) {
-                  return -1; // Placera de med ersättning överst
-                }
-                return 0; // Behåll ordningen om båda är lika
               })
               .map((item, index) => {
                 const delay = calculateDelay(
@@ -273,7 +247,10 @@ const Dashboard = () => {
                   >
                     <div>
                       <h5 className="mb-1">
-                        Tågnummer: {item.AdvertisedTrainIdent}
+                      Tågnummer: {item.AdvertisedTrainIdent}{" "}
+                        {item.Canceled && (
+                          <span className="text-danger font-weight-bold">(Inställt)</span>
+                        )}
                       </h5>
                       <p className="mb-1">Tågbolag: {item.TrainOwner}</p>
                       {item.FromLocation?.some(
