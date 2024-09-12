@@ -230,7 +230,7 @@ const Dashboard = () => {
                   item.EstimatedTimeAtLocation
                 );
 
-                return delay >= 20;
+                return item.Canceled || delay >= 20 ;
               })
               .sort((a, b) => {
                 const delayA = calculateDelay(
